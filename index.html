@@ -33,6 +33,13 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <!-- viewport-fit=cover is REQUIRED for iOS to expose the safe-area insets
+       (env(safe-area-inset-*)) to the web view. Without it, MediaQuery.viewPadding
+       is always zero on an iOS Home-Screen PWA, so the black-translucent status bar
+       runs the AppBar under the notch and the bottom NavigationBar sits under the
+       home indicator. Flutter only auto-injects a viewport tag when none exists, so
+       declaring our own here (with viewport-fit=cover) is what takes effect. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Log your puppy's day — naps, meals, potty, training — and see the trend a vet would care about.">
 
   <!-- Theme color — matches manifest.json + the app's seed (teal). -->
