@@ -40,7 +40,16 @@
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- iOS-specific standalone flag — REQUIRED for the status-bar style below to
+       take effect on a Home-Screen PWA. Without it, iOS ignores the style and
+       fills the top safe-area inset with the manifest background_color (cream),
+       which shows as a light strip under the notch over the dark app. -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- black-translucent: the web view runs edge-to-edge and the app paints the
+       safe-area inset itself (Flutter's AppBar already respects the top inset),
+       so the strip matches the app in both light and dark instead of being a
+       fixed color. -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Puppy Day">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
