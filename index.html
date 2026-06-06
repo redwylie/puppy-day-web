@@ -49,6 +49,31 @@
 
   <title>Puppy Day</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Standard Flutter viewport (scale-locked). This is exactly what Flutter
+       auto-injects when no viewport is present, declared explicitly so it sits
+       alongside the style below. KEEP maximum-scale/user-scalable=no — dropping
+       them (or adding viewport-fit=cover) breaks Flutter web's pointer/zoom
+       handling and locks input. Mirrors puppypath's working PWA. -->
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+  <!-- iOS Safari colors the standalone-PWA status-bar strip from the BODY
+       background (NOT theme-color). With no body background it defaults to a
+       white band over the app. Match the app's M3 surface (scaffold/AppBar bg)
+       per color scheme so the strip blends in instead of showing white. Hexes
+       are ColorScheme.fromSeed(Colors.teal).surface for each brightness — resync
+       if the default seed changes. (Proven pattern: puppypath's web/index.html.) -->
+  <style>
+    html { height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100%;
+      background-color: #F4FBF8; /* teal-seed LIGHT surface */
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #0E1513; } /* teal-seed DARK surface */
+    }
+  </style>
 </head>
 <body>
   <!--
